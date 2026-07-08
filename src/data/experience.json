@@ -1,0 +1,27 @@
+[
+  {
+    "company": "UAB Ainera",
+    "role": "Software Engineering Intern (ML/Data Science)",
+    "period": "June 2026 — Present",
+    "duration": "Present",
+    "description": [
+      "Conducting comprehensive research on various Machine Learning classification algorithms using scikit-learn.",
+      "Developed and optimized an automated text classification repository to accurately detect spam in messaging datasets.",
+      "Evaluating model performance and hyperparameter tuning to achieve high precision and recall metrics."
+    ],
+    "technologies": ["Python", "scikit-learn", "Machine Learning", "Text Classification", "Git"],
+    "color": "#4a5d4e"
+  },
+  {
+    "company": "Lithuanian Airports",
+    "role": "IT Internship",
+    "period": "May 2025 — July 2025",
+    "duration": "3 months",
+    "description": [
+      "Configured Cisco network switches and maintained Linux-based server environments.",
+      "Architected and deployed a Shell-based DNS Watchdog that automated failover procedures, reducing potential downtime for critical server monitoring."
+    ],
+    "technologies": ["Cisco Networking", "Linux", "Bash Scripting", "Microsoft Office"],
+    "color": "#737373"
+  }
+]

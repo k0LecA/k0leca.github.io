@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Web-based surveillance system",
+    "description": "A full-stack IP camera surveillance system featuring real-time video streaming via WebRTC and stream transcoding using MediaMTX and FFmpeg.",
+    "link": "https://github.com/k0LecA/aegis",
+    "technologies": ["FastAPI", "Python", "Vue 3", "Pinia", "WebRTC", "MediaMTX", "FFmpeg"]
+  },
+  {
+    "title": "Movie Collection App",
+    "description": "A full-stack TypeScript monorepo application featuring JWT authentication via HTTP-only cookies, bcrypt password hashing, and role-based endpoint protection.",
+    "link": "https://github.com/k0LecA/netflix-and-chill",
+    "technologies": ["TypeScript", "React 19", "Vite", "NestJS", "TypeORM", "SQLite", "REST API"]
+  }
+]
