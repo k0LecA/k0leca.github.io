@@ -1,159 +1,117 @@
-import { useState } from 'react'
-import experiencesData from './data/experience.json'
-import projectsData from './data/projects.json'
+import { useEffect, useState } from 'react'
+import experiences from './data/experience.json'
+import projects from './data/projects.json'
+import './App.css'
 
-function App() {
-  const [experiences] = useState(experiencesData)
-  const [projects] = useState(projectsData)
+const github = 'https://github.com/k0LecA'
+const linkedin = 'https://www.linkedin.com/in/jonas-butrimas-3a4a052b7'
+const nkkmCourses = ['Programming course', 'System administration course', 'Unity C# game development course']
+const covers = [
+  { name: 'Imageboard', image: '/images/imgbrd.jpg', category: 'Image-sharing & discussion', alt: 'Anonymous image board illustration with discussion threads and shared images' },
+  { name: 'Movie collection', image: '/images/cinema.jpg', category: 'Full-stack application', alt: 'Rows of red seats in a cinema' },
+]
 
-  return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#706a61] font-sans selection:bg-[#4a5d4e]/10 selection:text-[#4a5d4e]">
-      <div className="max-w-2xl mx-auto px-6 py-16 space-y-20">
-        
-        {/* Hero Section */}
-        <section className="space-y-5">
-          {/* Availability Status */}
-          <div className="flex items-center gap-2 text-[10px] font-mono font-bold tracking-widest uppercase text-[#4a5d4e]">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4a5d4e] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4a5d4e]"></span>
-            </span>
-            Available for work
-          </div>
-          
-          {/* Сюда пишем имя */}
-          <h1 className="text-4xl font-bold tracking-tight text-[#2d2a26]">
-            Jonas Butrimas.
-          </h1>
-          
-          {/* Чуть-чуть подкрутили текст под твой стек из резюме */}
-          <p className="text-[#706a61] leading-relaxed text-base">
-            Software Engineering student and developer. I build full-stack applications, automate infrastructure, and experiment with Machine Learning. Focused on clean code and reliable backend architecture.
-          </p>
-        </section>
-
-        {/* Experience Section */}
-        <section className="space-y-8">
-          <h2 className="text-xs uppercase tracking-widest text-[#706a61]/70 font-mono font-bold">
-            Experience
-          </h2>
-          
-          <div className="border-l border-[#e8e4dc] space-y-10 pl-5">
-            {experiences.map((exp, index) => (
-              <div key={index} className="relative group space-y-3">
-                {/* Timeline indicator node */}
-                <span className="absolute -left-[25.5px] top-1.5 w-2 h-2 rounded-full bg-[#faf8f5] border border-[#e8e4dc] group-hover:border-[#4a5d4e] transition-colors duration-200"></span>
-                
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                  <h3 className="text-base font-medium text-[#2d2a26] group-hover:text-[#4a5d4e] transition-colors duration-200">
-                    {exp.role} <span className="text-[#706a61]/65 font-light">@ {exp.company}</span>
-                  </h3>
-                  <span className="text-xs font-mono text-[#706a61]/60 sm:text-right">
-                    {exp.period}
-                  </span>
-                </div>
-                
-                <ul className="space-y-1.5 text-sm text-[#706a61] leading-relaxed list-none pl-0">
-                  {exp.description.map((item, dIndex) => (
-                    <li key={dIndex} className="relative pl-4 before:content-['—'] before:absolute before:left-0 before:text-[#e8e4dc]">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {exp.technologies.map((tech, tIndex) => (
-                    <span key={tIndex} className="px-2 py-0.5 rounded text-[11px] font-mono bg-white text-[#706a61] border border-[#e8e4dc]">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Featured Projects Section */}
-        <section className="space-y-8">
-          <h2 className="text-xs uppercase tracking-widest text-[#706a61]/70 font-mono font-bold">
-            Featured Projects
-          </h2>
-          
-          <div className="grid grid-cols-1 gap-4">
-            {projects.map((proj, index) => (
-              <a 
-                key={index} 
-                href={proj.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="group p-5 rounded-lg border border-[#e8e4dc] bg-white hover:bg-[#faf8f5]/40 hover:border-[#706a61]/30 transition-all duration-200 hover:-translate-y-0.5 block space-y-2.5 shadow-[0_1px_3px_rgba(45,42,38,0.01)]"
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="text-base font-medium text-[#2d2a26] group-hover:text-[#4a5d4e] transition-colors duration-200">
-                    {proj.title}
-                  </h3>
-                  <span className="text-[#706a61]/60 group-hover:text-[#4a5d4e] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-250 text-sm font-mono">
-                    ↗
-                  </span>
-                </div>
-                
-                <p className="text-sm text-[#706a61] leading-relaxed">
-                  {proj.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {proj.technologies.map((tech, tIndex) => (
-                    <span key={tIndex} className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#faf8f5] text-[#706a61] border border-[#e8e4dc]/70">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-
-        {/* Connect Section */}
-        <section className="space-y-6">
-          <h2 className="text-xs uppercase tracking-widest text-[#706a61]/70 font-mono font-bold">
-            Connect
-          </h2>
-          <div className="flex gap-6">
-            <a 
-              href="https://github.com/k0LecA" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="group flex items-center gap-2 text-[#706a61] hover:text-[#4a5d4e] transition-colors duration-200"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.577.688.479C19.138 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
-              </svg>
-              <span className="font-mono text-sm">GitHub</span>
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/jonas-butrimas-3a4a052b7" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="group flex items-center gap-2 text-[#706a61] hover:text-[#4a5d4e] transition-colors duration-200"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-              <span className="font-mono text-sm">LinkedIn</span>
-            </a>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="border-t border-[#e8e4dc] pt-8 text-xs font-mono text-[#706a61]/60">
-          <div>
-            &copy; {new Date().getFullYear()} &mdash; Developer Portfolio
-          </div>
-        </footer>
-
-      </div>
-    </div>
-  )
+function Arrow({ direction = 'up' }) {
+  return <span aria-hidden="true" className="arrow">{direction === 'down' ? '↘' : direction === 'top' ? '↑' : '↗'}</span>
 }
 
+function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  useEffect(() => {
+    const closeOnEscape = event => { if (event.key === 'Escape') setMenuOpen(false) }
+    document.addEventListener('keydown', closeOnEscape)
+    return () => document.removeEventListener('keydown', closeOnEscape)
+  }, [])
+
+  return (
+    <>
+      <a className="skip-link" href="#main">Skip to content</a>
+      <header className="site-header page-width" id="top">
+        <a className="wordmark" href="#top" aria-label="Jonas Butrimas, back to top">JB<span>.</span></a>
+        <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? 'Close' : 'Menu'} <span aria-hidden="true">{menuOpen ? '−' : '+'}</span></button>
+        <nav id="navigation" aria-label="Main navigation" className={menuOpen ? 'navigation is-open' : 'navigation'}>
+          {[['Work', '#work'], ['About', '#about'], ['Contact', '#contact']].map(([label, href]) => <a href={href} key={href} onClick={() => setMenuOpen(false)}>{label}<span aria-hidden="true">↘</span></a>)}
+        </nav>
+      </header>
+      <main id="main">
+        <section className="hero" aria-labelledby="hero-title">
+          <div className="page-width">
+            <h1 id="hero-title">Jonas Butrimas<span>.</span></h1>
+            <div className="hero-intro">
+              <p className="hero-role">Software engineer &amp; curious builder</p>
+              <p className="hero-description">I’m a software engineering student focused on building REST APIs with Node.js, Express, and PostgreSQL.</p>
+              <a href="#work" className="primary-link">Explore my work <Arrow direction="down" /></a>
+            </div>
+          </div>
+          <figure className="hero-image">
+            <img src="/images/architecture.jpg" alt="Sweeping white architectural forms set against an open sky" width="2000" height="1333" fetchPriority="high" />
+            <figcaption><span>Thoughtful structure. Reliable foundations.</span><a href="#work">Scroll to explore <Arrow direction="down" /></a></figcaption>
+          </figure>
+        </section>
+        <section className="work-section page-width section-space" id="work" aria-labelledby="work-title">
+          <div className="section-heading"><h2 id="work-title">Selected work<span>.</span></h2><p>A few things I’ve built.</p></div>
+          <div className="project-grid">
+            {projects.map((project, index) => {
+              const cover = covers[index]
+              return (
+                <article className="project" key={project.link}>
+                  <a className={`project-cover project-cover-${index}`} href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`Explore ${cover.name} on GitHub (opens in a new tab)`}>
+                    <img src={cover.image} alt={cover.alt} width={index === 0 ? '1920' : '1000'} height={index === 0 ? '1080' : '667'} loading="lazy" />
+                    <div className="cover-caption"><span>{cover.category}</span><strong>{cover.name}</strong></div><span className="cover-arrow"><Arrow /></span>
+                  </a>
+                  <div className="project-title"><h3>{cover.name}</h3><span>0{index + 1}</span></div>
+                  <p className="project-description">{project.description}</p>
+                  <ul className="technology-list" aria-label={`${cover.name} technologies`}>{project.technologies.map(tech => <li key={tech}>{tech}</li>)}</ul>
+                  <a className="text-link" href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub <Arrow /></a>
+                </article>
+              )
+            })}
+          </div>
+          <a className="all-work-link" href={github} target="_blank" rel="noopener noreferrer">More experiments live on GitHub <Arrow /></a>
+        </section>
+        <section className="about-section page-width section-space" id="about" aria-labelledby="about-title">
+          <div className="about-intro">
+            <h2 id="about-title">Built through experience<span>.</span></h2>
+            <p className="about-lead">Software engineering student. Hands-on developer. Always learning.</p>
+            <p className="about-description">From Linux servers to live video and machine learning, I’m interested in how systems work and how to make them work better.</p>
+            <a className="text-link" href={linkedin} target="_blank" rel="noopener noreferrer">More about me <Arrow /></a>
+          </div>
+          <div className="experience-list">
+            {experiences.map(experience => (
+              <article className="experience" key={experience.company}>
+                <p className="experience-period">{experience.period.replace(' — ', ' – ')}</p>
+                <h3>{experience.company}</h3><p className="experience-role">{experience.role}</p>
+                <ul className="experience-description">{experience.description.map(item => <li key={item}>{item}</li>)}</ul>
+                <ul className="technology-list" aria-label={`${experience.company} technologies`}>{experience.technologies.map(tech => <li key={tech}>{tech}</li>)}</ul>
+              </article>
+            ))}
+            <section className="courses" aria-labelledby="courses-title">
+              <div className="courses-heading">
+                <h3 id="courses-title">NKKM courses</h3>
+                <a className="text-link" href="https://kompiuteriumokykla.lt/" target="_blank" rel="noopener noreferrer">NKKM website <Arrow /></a>
+              </div>
+              <ul className="course-list">
+                {nkkmCourses.map(course => <li key={course}>{course}</li>)}
+              </ul>
+            </section>
+          </div>
+        </section>
+        <section className="contact-section" id="contact" aria-labelledby="contact-title">
+          <div className="page-width">
+            <div className="contact-content">
+              <div><h2 id="contact-title">Have something in mind?</h2><p>Open to opportunities, interesting projects, and good conversations.</p></div>
+              <a className="contact-link" href={linkedin} target="_blank" rel="noopener noreferrer">Let’s connect <Arrow /></a>
+            </div>
+            <footer className="site-footer">
+              <a className="footer-name" href="#top">Jonas Butrimas.</a>
+              <div className="social-links"><a href={github} target="_blank" rel="noopener noreferrer">GitHub <Arrow /></a><a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <Arrow /></a></div>
+              <a className="back-to-top" href="#top">Back to top <Arrow direction="top" /></a>
+              <small>© {new Date().getFullYear()} Jonas Butrimas</small>
+            </footer>
+          </div>
+        </section>
+      </main>
+    </>
+  )
+}
 export default App

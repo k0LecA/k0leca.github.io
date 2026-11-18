@@ -1,9 +1,9 @@
 [
   {
-    "title": "Web-based surveillance system",
-    "description": "A full-stack IP camera surveillance system featuring real-time video streaming via WebRTC and stream transcoding using MediaMTX and FFmpeg.",
-    "link": "https://github.com/k0LecA/aegis",
-    "technologies": ["FastAPI", "Python", "Vue 3", "Pinia", "WebRTC", "MediaMTX", "FFmpeg"]
+    "title": "Imageboard",
+    "description": "An imageboard backend built with Express and PostgreSQL, featuring board and thread management, image uploads to MinIO, and moderator sign-in with HttpOnly cookies and hashed session tokens.",
+    "link": "https://github.com/k0LecA/imageboard",
+    "technologies": ["React", "TypeScript", "Vite", "Node.js", "Express", "PostgreSQL", "MinIO", "Docker Compose"]
   },
   {
     "title": "Movie Collection App",
